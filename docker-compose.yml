@@ -1,0 +1,47 @@
+
+version:  '3.2'
+
+services:
+
+  sample-1:
+    image: "sample-jakartaee-docker"
+    networks:
+      - sample-network
+    ports:
+      - 8080:8080
+    environment:
+      - JAVA_OPTS='-Xmx100m'
+
+  sample-2:
+    image: "sample-jakartaee-docker"
+    networks:
+      - sample-network
+    ports:
+      - 8081:8080
+    environment:
+      - JAVA_OPTS='-Xmx100m'
+
+  sample-3:
+    image: "sample-jakartaee-docker"
+    networks:
+      - sample-network
+    ports:
+      - 8082:8080
+    environment:
+      - JAVA_OPTS='-Xmx100m'
+
+  loadbalancer:
+    image: "jasonwyatt/nginx-loadbalancer"
+    networks:
+      - sample-network
+    ports:
+      - 80:80
+    depends_on:
+      - sample-1
+      - sample-2
+      - sample-3
+    env_file:
+      - env.list
+
+networks:
+  sample-network:
