@@ -10,12 +10,12 @@ To test:
 <pre><code>curl -X GET http://localhost:8080/sample/resource/host</code></pre>
 
 ### Docker Compose
-
 To up:
 <pre><code>docker-compose up -d</code></pre>
-
 To test:
 <pre><code>curl -X GET http://localhost/sample/resource/host</code></pre>
-
 To down:
 <pre><code>docker-compose down</code></pre>
+
+### References
+* [Jakarta EE and Docker: What You Should Know](https://dzone.com/articles/jakarta-ee-and-docker-what-you-should-know)
